@@ -1,0 +1,47 @@
+Dev Env:                 API:  52.77.231.215   port 3000    ,   DB :  52.77.24.56  port 3001
+Prod Env:                API:  52.53.202.181   port 3000 ,      DB:  52.8.212.229   port 3001
+newProd Env:             API:  54.193.89.175   port 3000      ，  DB:  52.8.212.229   port 3001
+backend301-prod Env:     API:  52.53.183.64    port 3000      ，  DB:  52.8.212.229   port 3001
+
+tencent 腾讯云上新建虚拟机
+
+
+
+QQ:3451452611 Psw:2016CooStaYDev
+邮箱：christopheryang@coostay.com
+服务器操作系统为 CentOS 7.2 64位 ，默认账户为 root ，初始密码为 ca4Y5RbQTgrmNR9E
+服务器名称	云主机ID	所在网络ID	内网IP	        公网IP
+u672au547du540d	ins-abaut97q	基础网络	10.104.42.209	123.207.20.23
+
+
+
+New Dev Redis Server : 52.220.195.108   port : 6379
+    master redis server :localhost port:6379
+www server dev :           52.220.255.229                    port 3008
+       old master :           52.53.202.181 即share.coostay.com port 3008 
+	new  master IP is : 54.215.192.101  share.prod.coostay.com port 3008
+aws  password:2016CooStaYDev 
+
+
+王思铭(siming)
+update： web001-sp-dev  和 backend001-sp-dev  的 auto deployment 已经做好了 
+王思铭(siming)
+只要 coostay-api  dev branch 更新， backend001-sp-dev 自动deploy 
+王思铭(siming)
+只要 coostay-www dev branch 更新 ， web001-sp-dev 自动deploy 
+王思铭(siming)
+BTW ，  我们的 dev backend API  可以改用统一 DNS：  api.dev.coostay.com  port 80 
+王思铭(siming)
+我们没有SSL 而且是 dev 就暂时先用 http 吧 ，应该没关系 
+王思铭(siming)
+which means 在dev env  前台 call 后台 的 URL 是 ：  http://api.dev.coostay.com (default port 80) 
+
+
+自动部署监听程序 ：
+王思铭(siming) @
+昨天 22:29:17
+1,  URL:  52.77.246.183:8080
+2,   Username:  coostay
+      Password:  coostayj123
+
+

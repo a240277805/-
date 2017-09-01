@@ -1,0 +1,215 @@
+11.28：
+
+迷茫
+1.MongoDB数据库登入，查看数据
+2.AWS亚马逊怎么用
+3.程序怎么跑起来
+4.如何测试上次的问题。
+5.要怎么样把程序跑起来
+  1）跑起来需要什么
+  docker.
+6.docker干嘛用的，怎么用。
+  1）docker 跑node.js 程序。
+
+
+11.29：
+
+1.查个人补交社保
+2.OK办一张华夏银行的银行卡
+3.OK在windows上跑通 API  监听 localhost:3000
+  0）co-bcrypt 包的安装需要node-gyp包来编译，而node-gyp包的安装比较复杂，目前没有安装成功，
+  临时解决方法替换成bcryptjs包，问题消失，但用法可能不同存在隐患。
+  1）apn 中的p 包报错，说找不到某某文件，先测试apn的使用
+    该文件路径不对，可能是我启动的位置影响的路径
+    改了一下 constant中apn的路径，可以启动
+  2）MongoDB验证失败，可能是因为路径不对，连接Url不对
+  修改成测试连接地址，其他不用改MongoDB连接成功
+  3）redis验证失败，修改本地密码为程序中密码，连接成功
+
+4.OK服务器测试，怎么测试，
+  1）服务器与客户端通讯靠json 所有 post body 的参数使用 application/json, 而不是 form-data, 也不是 xxx-www-url-encoded, 即：将 JSON 直接作为 body 传上来，然后设置 Content-Type:application/json;charset=UTF-8
+  2)分页规则
+  3）表单校验，规则
+  4）时间解析规则  API 统一使用 ISO 8601 格式的时间. 解析方式搜索: parse iso 8601
+  
+  5）客户端请求的类型，和服务器返回的类型
+     为啥总返回找不到，跟断点看一下，用了 koa-mount中间件（貌似跟他没啥关系），然后路径中加了一个/v1就可以访问了，但header没有授权
+ 测试可能是通过require.js 中的isomorphic-fetch中 fetch 方法，了解怎么使用，没有找到引用的地方，怎么测试
+
+4.OK程序debug模式部署在docker容器中？
+5.OK系统服务器端的开发流程，包括调试。
+  1）在本地调通，部署到docker中，亚马逊上部署，上传到github,
+6.OK我负责哪些工作，是开发工作，测试工作，部署工作。
+
+
+
+新加坡，awe public , port ,password 测试的  dev
+ api.coostay.com
+
+ 7.OK模拟ios请求 
+
+
+ 11.30：
+
+ 1.下载最新代码，调通--OK
+2.纪录调通修改的位置---OK
+  1)package.json, co-bcrypt换成 bcryptjs----》删除package.json中co-bcrypt,然后执行 npm install co-bcryptjs --save
+  2)users 8,co-bcrypt换成 bcryptjs---->换成co-bcryptjs
+  3)auth 15,co-bcrypt换成 bcryptjs---->换成co-bcryptjs
+  5)constant.js 27,先注掉const mongoURI，然后添加const mongoURI='mongodb://52.77.24.56:3001/coostay';
+  -4)app.js  30,app.use(favicon('assets/images/logo_small.png'));路径去掉app/
+ - 6）constants.js 204  中的 apn 设置：去掉cet路径中的app/
+  -7）constants.js 204  中的 apn 设置：去掉key路径中的app/
+  -8）auth.js 74,验证密码的暂时代码注掉，因为用到了bcrypt模块，---》换成了co-bcryptjs后取消注释测试成功
+
+  注：4），6），7）原因是因为启动路径不对，改启动根目录下的index.js成功！
+
+3.将修改co-bcrypt为 bcryptjs的代码隐患去掉 OK
+   1）在hello文件夹中打开cmd  npm install co-bcrypt报错：
+      （1）警告：在此解决方案中一次生成一个项目。若要启用并行生成，请添加“/m”开关。
+      （2）报错：npm WARN enoent ENOENT: no such file or directory, open 'D:\gitWorkSpace\hello\package.json'
+   2）然后拷贝一个package.json到该目录，再执行     npm install co-bcrypt报错
+       1） 报错： ERR! Failed at the bcrypt@0.8.7 install script 'node-gyp rebuild'.
+   3）百度一下此问题，推荐第一个链接 https://cnodejs.org/topic/53040bc95366a72a2c2128b9 查看第一个回复，让我安装node-gyp。
+   4）查看node-gyp(跨平台工具，编译模块成node模块)，查看安装步骤：
+      a.在windows平台需要安装 windows-build-tools 以管理员身份运行cmd运行 npm install --global --production windows-build-tools;
+      b.或者是手动安装工具和配置
+        a.-----------太麻烦，超级麻烦
+      安装vs2015吧 
+   5）查看bcryptjs与bcrypt的区别，发现机制不同（bcrypt使用纯javascript写的），但用法相同，后来又发现了co-bcryptjs,这个和co-bcrypt也是机制不同，但用法相同（都是支持co）
+   6)果断测试npm install co-bcryptjs  ,sucess 不需要node-gyp，
+   7)在项目中替换，然后测试新密码，看是否走通---》sucess
+
+   注：
+   a.试着用bcryptjs，然后改代码为回调方式，报错，可能因为return yield this.addToken(foundUserJson);这句中的this指针位置，找不到addToken方法。
+   b.装完VS2015 ，然后再试npm install co-bcrypt  仍然失败。 可能原因，C++编译环境没有配置好。
+
+
+4.测试发布房源缓慢的问题，找出原因。
+   1)缓慢可能出在查询是否存在的地方
+   2）发布房源报错：“重复房源”，原因可能是apartmentNo为空，查询条件减少
+5.如何抓取app数据。----》给我发来一些测试数据
+6.如何上传东西到github 失败，报错Push failed: Failed with error: fatal: Could not read from remote repository.---解决：取消fork,然后貌似添加我进项目。
+7.如何上传文件到branch dev
+8.找出测试的JSON数据的问题所在并改正
+   1).JSON字符串里的非数字型键值没有双引号
+   2).JSON中存在\t这样的制表符,看起来和空格一样,但是就是因为它的存在校验不通过。去掉就能过了。
+   3).编辑器有bom头也会造成
+9.查看github isuess ,定计划
+
+Node.js 改变：
+1、去掉居宿、邻里、市集address相同情况的审核，允许用户上传相同地址的资源
+2、加1个log（附带一个接口）------- 如果JSON存储失败则log此居宿、邻里、市集的ID\name\creator
+并返回IOS ”网络错误，请重新上传“ -----巍巍注意这里多了一个接口，也要返回给用户
+
+
+
+  计划：
+  a.查看代码居宿、邻里、市集验证的地方，去掉验证。
+  b.查看log用法，好像是用的winston，用法
+  c.JSON存储失败指的是？，存储 居宿、邻里、市集 到数据库吗
+  d.接口的意思是给巍巍加上reqrest的返回值吗。查看返回错误信息代码。
+
+
+12.01：
+1.熟悉/houses/:id 流程，事件
+
+2.熟悉houseModel 数据是怎么存储
+  1）Post.discriminator('House', HouseSchema); HouseSchema是继承Post模版，SoSo
+
+3. 居宿、邻里、市集 的JSON存储失败，输出日志和返回“网络错误，请重新上传!”接口。
+
+
+12.02：
+
+1.测试接口数据
+2.继续熟悉/houses/:id 流程，事件
+3.查看post ,get/houses/逻辑和get /houses/:id/逻辑
+  1）get/houses/
+    a.查找所有house类型的post数据从post Collection；
+	b.按照USER_SIMPLE      : '_id avatar email username',来从 User Collection找；
+    c.如果没有同时提供lowerLeftLat && lowerLeftLng && upperRightLat && upperRightLng ，但提供了longitude和latitude
+       则按照经纬度查找，距离如果提供了distance就按distance，否则按最远距离。
+	  
+     /*q = q.where({
+      'address.geo': {
+        '$nearSphere': {
+          '$geometry'   : {type: 'Point', coordinates: [longitude, latitude]},
+          '$maxDistance': distance || Number.MAX_VALUE
+        }*/
+    d.如果同时提供了lowerLeftLat && lowerLeftLng && upperRightLat && upperRightLng，则按照此范围来查找。
+	e.然后按照        myRole,propertyType,roomType,amenities,notAllowedItems,来查找
+	f.然后按照租期（Lease period）来查找
+	g.然后按照名称来查找
+	h.然后按照价格的起始来查找
+	i.然后按照起止点和页数来查找
+	j.然后Sort by field, default is _id desc  按照（sortField），如果没有该字段则按照发布的时间（新到旧）来查找
+	k.如果没有更新时间（updatedAtAfter）则按照当前时间一个月前的，来查找
+	l.查找数据库得到数据，返回
+	m.返回的数据如果没有评估（rate），则rate=3;
+	n.
+  2）post 的逻辑就是发布该房源，如果发布成功，则返回该房源信息。
+  3） get/houses/:id逻辑
+4.熟悉lodash模块使用
+5.instanceof用法query.myRole instanceof Array
+6.数据库查询优化，经纬度等范围查询。
+  1）代码查询方面：缩小查询范围
+  2）aws虚拟机上部署添加资源，加大反应速度。
+  3）Mongoose数据库方面拆分表，减少搜索
+7.node.js分布式部署
+建议：
+每天早上抽出15分钟开个早会
+
+12.05：
+
+1./users/me/recentBrowsed和/users/me/stared 两个request请求返回的JSON中没有价格price。
+  解决办法：在通过post的级联查询中并没有查询price的条件，所以加上price 条件，则查询数据库返回price 
+2.测试mongodb数据库连接失败。解决办法：更新MongoDB数据库地址。
+3.合并dev到master，其中出现个问题，在master分支中出现了dannilZhu的commit，而我把它push上去发现代码重复了。
+ 查找原因，我是rebase到master分支，出现了该commit,然后可能是Zhu多提交了一个commit。
+
+12.06：
+
+1.总结分开post表，需准备的东西。
+2.总结之前修改的代码，错误，修改方法提交到google云盘
+  1:问题:在Win10上安装node.js依赖包co-bcrypt
+    原因：
+	解决办法：
+	
+  2:问题:node 启动 app.js 报错，错误信息：“apn 中的p 包报错，说找不到某某文件”，
+    原因：
+    解决办法：
+  3:问题：发布房源缓慢
+  4：问题：发布房源报错误信息“重复房源”；
+  5：问题：/users/me/recentBrowsed和/users/me/stared 两个request请求返回的JSON中没有价格price。
+  6：问题：合并dev到master出错。
+
+12.09：
+
+1.环信注册失败
+ 测试记录：
+ A：- 1）第一次用手机A，用户名A注册，报错：修改失败
+    - 2）报错:环信注册失败
+    + ３）成功
+    + 4，5.6.7）手机号已被注册
+ B：+ 1）第一次用EmailA，用户名A注册，报错用户名已存在
+    + 2）用EmailA 用户名B ：成功
+    + 3.4.5.6）用EmailA 用户名B   :Email 已被注册
+
+ C：+ 1）第一次用EmailB，用户名B注册  ，报错：用户名已存在
+    - 2.3.4.5）用EmailB，用户名C注册，报错：环信注册失败
+    + 6）注册成功
+    + 7）邮箱已被注册
+
+2.手机号码区号验证失败
+3.app可以用同一个用户名注册？
+代码逻辑和数据库逻辑都是不可用同一用户名的。
+
+
+添加测试代码，注释掉手机验证码验证
+
+12.12：
+1.修改dev的redis到远程地址：New Dev Redis Server : 52.220.195.108   port : 6379
+2.修改服务器中/auth/forgotPassword/sendCode发送邮件区分大小写BUG
+3.同步dev中更改到master(两个1，去掉获取数据只获取当前一个月的数据2.修改密码发送邮件区分大小写BUG)
+

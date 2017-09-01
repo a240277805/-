@@ -1,0 +1,26 @@
+1.仿照文档在腾讯云上安装docker,docker-compose 
+2.学习docker怎么用
+2.部署微博系统
+
+
+12.26（周一）
+1.搭建angularjs 环境
+2.下载angularjs 开源项目
+3.思考项目加星优化---》更新服务器配置后15条记录，查询速度在500毫秒以内。
+4.熟悉node karma单元测试
+5.购买服务器，安装docker等
+6.部署demo
+7.总结服务器ip--》完成
+
+12.28
+1.新加接口--》待定
+2.改www跟随导航栏--》解决（1）跟随导航栏，然后置顶
+
+
+1.4(周 三)
+1.angularjs 加入新组件
+  1）一个class ...Component,有template,selector,类中定义属性方法
+  2)一个类model来定义组建中用到的对象，如hero
+  3)将该组建加入Modules 的declarations中
+1.5（周四）
+1.pxd格式两个页面，acstritor

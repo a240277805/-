@@ -1,0 +1,71 @@
+Dev Env:                 API:  52.77.231.215   port 3000    ,   DB :  52.77.24.56  port 3001
+Prod Env:                API:  52.53.202.181   port 3000 ,      DB:  52.8.212.229   port 3001
+newProd Env:             API:  54.193.89.175   port 3000      £¬  DB:  52.8.212.229   port 3001
+backend301-prod Env:     API:  52.53.183.64    port 3000      £¬  DB:  52.8.212.229   port 3001
+
+ sudo lsof -i:3000
+
+tencent ÌÚÑ¶ÔÆÉÏÐÂ½¨ÐéÄâ»ú
+
+sendgrid:
+Chris Yang(Chris Yang)
+特别关注
+CooStaYDev
+Chris Yang(Chris Yang)
+特别关注
+Psw:2016CooStaYDev
+
+
+云片
+Chris Yang(Chris Yang)
+特别关注
+@孟康(孟康) coostay2016@163.com
+Chris Yang(Chris Yang)
+特别关注
+Psw:2016CooStaYDev
+
+
+QQ:3451452611 Psw:2016CooStaYDev
+ÓÊÏä£ºchristopheryang@coostay.com
+·þÎñÆ÷²Ù×÷ÏµÍ³Îª CentOS 7.2 64Î» £¬Ä¬ÈÏÕË»§Îª root £¬³õÊ¼ÃÜÂëÎª ca4Y5RbQTgrmNR9E
+
+
+
+
+New Dev Redis Server : 52.220.195.108   port : 6379
+    master redis server :localhost port:6379
+www server dev :           52.220.255.229                    port 3008
+   old master :           52.53.202.181 ¼´share.coostay.com port 3008 
+   new  master IP is : 54.215.192.101  share.prod.coostay.com port 3008
+aws  password:2016CooStaYDev  ÓÊÏä£ºchristopheryang@coostay.com
+
+
+ÍõË¼Ãú(siming)
+update£º web001-sp-dev  ºÍ backend001-sp-dev  µÄ auto deployment ÒÑ¾­×öºÃÁË 
+ÍõË¼Ãú(siming)
+Ö»Òª coostay-api  dev branch ¸üÐÂ£¬ backend001-sp-dev ×Ô¶¯deploy 
+ÍõË¼Ãú(siming)
+Ö»Òª coostay-www dev branch ¸üÐÂ £¬ web001-sp-dev ×Ô¶¯deploy 
+ÍõË¼Ãú(siming)
+BTW £¬  ÎÒÃÇµÄ dev backend API  ¿ÉÒÔ¸ÄÓÃÍ³Ò» DNS£º  api.dev.coostay.com  port 80 
+ÍõË¼Ãú(siming)
+ÎÒÃÇÃ»ÓÐSSL ¶øÇÒÊÇ dev ¾ÍÔÝÊ±ÏÈÓÃ http °É £¬Ó¦¸ÃÃ»¹ØÏµ 
+ÍõË¼Ãú(siming)
+which means ÔÚdev env  Ç°Ì¨ call ºóÌ¨ µÄ URL ÊÇ £º  http://api.dev.coostay.com (default port 80) 
+
+
+×Ô¶¯²¿Êð¼àÌý³ÌÐò £º
+ÍõË¼Ãú(siming) @
+×òÌì 22:29:17
+1,  URL:  52.77.246.183:8080
+2,   Username:  coostay
+      Password:  coostayj123
+
+
+      ÍõË¼Ãú(siming)
+11:17:07
+SIMINGs-iMac:~ simingwang$ cat coostay_alias  |grep db
+alias coostay-db-prod="ssh -i /Users/simingwang/.ssh/coostay-siming.pem  ec2-user@52.8.212.229"
+alias coostay-db-dev="ssh -i .ssh/coostay-backend-singapore.pem  ec2-user@52.77.24.56"
+
+
