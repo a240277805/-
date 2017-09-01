@@ -1,0 +1,2 @@
+1.问：命令行 li.exe redis (error) ERR operation not permitted--》没验证密码：	auth 123456  /或是登陆时$redis-cli -h 127.0.0.1 -p 6379 -a "mypass"
+2.命令行获取所有命令--》config get *

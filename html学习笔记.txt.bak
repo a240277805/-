@@ -1,0 +1,36 @@
+<meta http-quiv="refresh" content="等待秒数;URL=跳转 url 地址"/>
+不加载缓存 
+<mete http-equiv="pragma" content="no-cache"/>
+
+iframe  标签　框架　　创建包含另一个文档的内联框架（即行内框架）
+
+测试浏览器　：谷歌浏览器，火狐浏览器，ie系列的浏览器
+
+
+交集选择器：直接往后写，并集选择器：　，；后代选择器：空格相连　；伪类选择器：　用：；通配符选择器：×
+
+
+text-indent:文本缩进
+text-align:文本对齐
+line-height:行距
+word-spacing: 字（单词）间距
+letter-spacing: 中文间隔
+text-decoration:下划线
+font-family:字体　摆三个，依次用，
+
+
+布局：
+margin-left:auto  and margin-right:auto 居中
+
+默认边距　初始化为０：
+body,ul,li,p,img{
+margin:0px;
+padding:0px;
+}　　
+
+左侧浮动，右侧浮动，下侧clear:both;
+　块级元素怎么对父元素居中？　元素要设置长度，元素左右的外边据设置成auto即可！
+
+img直接定义长宽没用，需要display:block
+
+dl ,dt, dd  自定义列表

@@ -1,0 +1,10 @@
+orientation  定位，方向
+Tips 提示
+Tricks技巧
+domain 范围，领域，管辖范围
+bizarre 奇怪的
+please be mindful that 请注意
+opaque 不透明的
+iterate 迭代
+reference 参考
+mounted  安装

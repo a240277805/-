@@ -1,0 +1,23 @@
+今天上午要做两件事，
+1.熟悉redis,分析weibo项目，把redis加进去  1hour
+2.熟悉socket.io,然后开始搭建一个聊天程序。1hour
+3.熟悉iBlog2整体结构 0.5hour
+3.学习react    1hour
+
+
+收获：
+html
+1）.html() .text()   .val()  区别
+
+11.19
+1.node.js 中的同步与异步
+2.并发测试模块 http_load 怎么用
+3.继承的方式，及使用
+4.node.js调用流程，以及async进行流程控制，熟悉 promise
+
+
+11.20
+1.学习i18n的使用。
+
+11.24
+1.学习第三方登录
